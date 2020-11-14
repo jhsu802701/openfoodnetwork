@@ -23,3 +23,16 @@ STR1="nvm use node"
 STR2="nvm use $NODE_VERSION"
 sed -i.bak "s|$STR1|$STR2|g" $HOME/.bashrc
 rm $HOME/.bashrc.bak
+
+RUBY_VERSION=`cat .ruby-version`
+echo '-------------------------'
+echo "rvm install $RUBY_VERSION"
+rvm install $RUBY_VERSION
+
+echo '---------------------'
+echo "rvm use $RUBY_VERSION"
+rvm use $RUBY_VERSION
+
+echo '-------'
+echo 'ruby -v'
+ruby -v
