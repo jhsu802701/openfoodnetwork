@@ -1,4 +1,5 @@
-FROM ubuntu:20.04
+# Ubuntu 20.04 is not compatible with wkhtmltopdf (used in the test suite).
+FROM ubuntu:18.04
 
 ENV TZ Europe/London
 
@@ -8,6 +9,10 @@ RUN echo "deb http://security.ubuntu.com/ubuntu bionic-security main" >> /etc/ap
 
 # Install all the requirements
 RUN apt-get update && apt-get install -y curl git build-essential software-properties-common wget zlib1g-dev libssl1.0-dev libreadline-dev libyaml-dev libffi-dev libxml2-dev libxslt1-dev wait-for-it imagemagick unzip
+
+# wkhtmltopdf is needed for testing
+# xvfb and libfontconfig are needed to install wkhtmltopdf without being prompted for inputs
+RUN apt-get install -y xvfb libfontconfig wkhtmltopdf
 
 # Setup ENV variables
 ENV PATH /usr/local/src/rbenv/shims:/usr/local/src/rbenv/bin:$PATH
