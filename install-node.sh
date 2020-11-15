@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# BEGIN: activate NVM
 export NVM_DIR="/home/`whoami`/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+# END: activate NVM
 
 NODE_VERSION=`cat .node-version`
 echo '-------------------------'
